@@ -1,6 +1,7 @@
 #pragma once
 #include "Graphics.h"
 #include "Timer.h"
+#include "GameEntity.h"
 
 namespace SDLFramework {
 	class GameManager {
@@ -28,6 +29,10 @@ namespace SDLFramework {
 		//Modules
 		Graphics* mGraphics;
 		Timer* mTimer;
+
+		//Sanity Testing Varaibles
+		GameEntity* mParent;
+		GameEntity* mChild;
 
 		SDL_Event mEvents;
 	};

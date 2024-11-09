@@ -13,7 +13,7 @@ namespace SDLFramework {
 
 		void Position(float x, float y);
 		void Position(const Vector2& pos);
-		Vector2 Postion(Space space = World);
+		Vector2 Position(Space space = World);
 
 		void Rotation(float rot);
 		float Rotation(Space space = World);
@@ -22,7 +22,7 @@ namespace SDLFramework {
 		Vector2 Scale(Space space = World);
 
 		void Active(bool active);
-		bool Active();
+		bool Active() const;
 
 		void Parent(GameEntity* parent);
 		GameEntity* Parent();
