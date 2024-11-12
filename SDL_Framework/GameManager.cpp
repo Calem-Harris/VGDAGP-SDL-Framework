@@ -52,6 +52,7 @@ namespace SDLFramework {
         //This is the old frame we need to clear
         mGraphics->ClearBackBuffer();
 
+        mRedShip->Render();
         mTex->Render();
 
         //Actually showing everthing that we have told to render
@@ -74,12 +75,20 @@ namespace SDLFramework {
         mTex->Scale(Vector2(1.5f, 1.5f));
 
         mTex->Position(Vector2(Graphics::SCREEN_WIDTH * 0.49f, Graphics::SCREEN_HEIGHT * 0.5f));
+
+        mRedShip = new Texture("SpriteSheet.png", 182, 78, 20, 20);
+
+        mRedShip->Scale(Vector2(1.5f, 1.5f));
+        mRedShip->Position(Vector2(Graphics::SCREEN_WIDTH * 0.49f, Graphics::SCREEN_HEIGHT * 0.5f));
     } 
 
     GameManager::~GameManager() {
         //Release Variables
         delete mTex;
         mTex = nullptr;
+
+        delete mRedShip;
+        mRedShip = nullptr;
         
         //Release Modules
         Graphics::Release();

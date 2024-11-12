@@ -33,10 +33,8 @@ namespace SDLFramework {
 		AssetManager* mAssetManager;
 
 		//Sanity Testing Varaibles
-		GameEntity* mParent;
-		GameEntity* mChild;
-
 		Texture* mTex;
+		Texture* mRedShip;
 
 		SDL_Event mEvents;
 	};
