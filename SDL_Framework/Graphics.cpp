@@ -55,9 +55,7 @@ namespace SDLFramework {
 
 	void Graphics::DrawTexture(SDL_Texture* texture, SDL_Rect* srcRect, SDL_Rect* dst_Rect,
 		float angle, SDL_RendererFlip flip) {
-		//TODO: Define this function
-		//Requirement 1: Create an AssetManager class which will handle loading and retrieving textures
-		//Requirement 2: Create a Texture Class
+		SDL_RenderCopyEx(mRenderer, texture, srcRect, dst_Rect, angle, nullptr, flip);
 	}
 
 	void Graphics::ClearBackBuffer() {

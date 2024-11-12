@@ -49,7 +49,12 @@ namespace SDLFramework {
     }
 
     void GameManager::Render() {
+        //This is the old frame we need to clear
         mGraphics->ClearBackBuffer();
+
+        mTex->Render();
+
+        //Actually showing everthing that we have told to render
         mGraphics->Render();
     }
 
@@ -63,34 +68,28 @@ namespace SDLFramework {
 
         //Initialize all other modules
         mTimer = Timer::Instance();
+        mAssetManager = AssetManager::Instance();
 
-        mParent = new GameEntity(100.0f, 400.0f);
-        mChild = new GameEntity(100.0f, 500.0f);
+        mTex = new Texture("SpriteSheet.png", 182, 54, 20, 20);
+        mTex->Scale(Vector2(1.5f, 1.5f));
 
-        //This is happening BEFORE we are attaching our GameEntities to each other
-        printf("Child local pos: (%f, %f)\n",
-            mChild->Position(GameEntity::Local).x,
-            mChild->Position(GameEntity::Local).y);
-
-        mChild->Parent(mParent);
-
-        //This is happening AFTER we are attaching mChild to mParent
-        printf("Child local pos: (%f, %f)\n",
-            mChild->Position(GameEntity::Local).x,
-            mChild->Position(GameEntity::Local).y);
-
-        printf("Child local pos: (%f, %f)\n",
-            mChild->Position(GameEntity::World).x,
-            mChild->Position(GameEntity::World).y);
+        mTex->Position(Vector2(Graphics::SCREEN_WIDTH * 0.49f, Graphics::SCREEN_HEIGHT * 0.5f));
     } 
 
     GameManager::~GameManager() {
+        //Release Variables
+        delete mTex;
+        mTex = nullptr;
+        
         //Release Modules
         Graphics::Release();
         mGraphics = nullptr;
 
         Timer::Release();
         mTimer = nullptr;
+
+        AssetManager::Release();
+        mAssetManager = nullptr;
 
         //Quit SDl Subsystems
         SDL_Quit();
