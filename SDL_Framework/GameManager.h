@@ -3,6 +3,7 @@
 #include "Timer.h"
 #include "GameEntity.h"
 #include "Texture.h"
+#include "InputManager.h"
 
 namespace SDLFramework {
 	class GameManager {
@@ -19,7 +20,7 @@ namespace SDLFramework {
 		void Render();
 
 		void Run();
-	
+
 	private:
 		const int FRAME_RATE = 60;
 		//How we are creating this as a Singleton
@@ -27,14 +28,17 @@ namespace SDLFramework {
 		//Loop Control
 		bool mQuit;
 
-		//Modules
+		//Modules (aka singletons
 		Graphics* mGraphics;
 		Timer* mTimer;
 		AssetManager* mAssetManager;
+		InputManager* mInputManager;
 
 		//Sanity Testing Varaibles
+		GameEntity* mParent;
+		GameEntity* mChild;
+
 		Texture* mTex;
-		Texture* mRedShip;
 
 		SDL_Event mEvents;
 	};

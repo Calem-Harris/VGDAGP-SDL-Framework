@@ -2,7 +2,7 @@
 #include <math.h>
 
 namespace SDLFramework {
-//macros
+	//macros
 #define PI 3.1415926535
 #define DEG_TO_RAD PI / 180.0f
 
@@ -27,6 +27,24 @@ namespace SDLFramework {
 		Vector2 Normalized() {
 			float mag = Magnitude();
 			return Vector2(x / mag, y / mag);
+		}
+
+		Vector2& operator+=(const Vector2& rhs) {
+			x += rhs.x;
+			y += rhs.y;
+
+			return *this;
+		}
+
+		Vector2& operator-=(const Vector2& rhs) {
+			x -= rhs.x;
+			y -= rhs.y;
+
+			return *this;
+		}
+
+		Vector2 operator-() const {
+			return Vector2(-x, -y);
 		}
 	};
 
@@ -71,7 +89,7 @@ namespace SDLFramework {
 		float radAngle = (float)(angle * DEG_TO_RAD);
 
 		return Vector2((float)vec.x * cos(radAngle) - vec.y * sin(radAngle), //Rotated X Position
-						(float)vec.x * sin(radAngle) + vec.y * cos(radAngle)); //Rotated Y Postion 
+			(float)vec.x * sin(radAngle) + vec.y * cos(radAngle)); //Rotated Y Postion 
 	}
 
 	//Requires us to have 2 vectors

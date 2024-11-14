@@ -27,11 +27,14 @@ namespace SDLFramework {
 		void Parent(GameEntity* parent);
 		GameEntity* Parent();
 
+		void Translate(Vector2 vec, Space space = Local);
+		void Rotate(float amount);
+
 		virtual void Update() {};
 		virtual void Render() {};
 
 	private:
-		Vector2 mPostion;
+		Vector2 mPosition;
 		float mRotation;
 		Vector2 mScale;
 
