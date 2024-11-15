@@ -77,6 +77,8 @@ namespace SDLFramework {
         if (mInputManager->MouseButtonReleased(InputManager::Left)) {
             std::cout << "Left Mouse button released!" << std::endl;
         }
+
+        mTex->Update();
     }
 
     void GameManager::LateUpdate() {
@@ -88,6 +90,7 @@ namespace SDLFramework {
         mGraphics->ClearBackBuffer();
 
         mTex->Render();
+        mFontTex->Render();
 
         //Actually showing everthing that we have told to render
         mGraphics->Render();
@@ -106,16 +109,22 @@ namespace SDLFramework {
         mAssetManager = AssetManager::Instance();
         mInputManager = InputManager::Instance();
 
-        mTex = new Texture("SpriteSheet.png", 182, 54, 20, 20);
+        mTex = new AnimatedTexture("SpriteSheet.png", 204, 45, 40, 38, 4, 0.5f, AnimatedTexture::Horizontal);
         mTex->Scale(Vector2(1.5f, 1.5f));
 
         mTex->Position(Vector2(Graphics::SCREEN_WIDTH * 0.49f, Graphics::SCREEN_HEIGHT * 0.5f));
+
+        mFontTex = new Texture("Hello World!", "ARCADE.TTF", 72, { 255, 0, 0 });
+        mFontTex->Position(Vector2(400, 200));
     }
 
     GameManager::~GameManager() {
         //Release Variables
         delete mTex;
         mTex = nullptr;
+
+        delete mFontTex;
+        mFontTex = nullptr;
 
         //Release Modules
         Graphics::Release();

@@ -1,6 +1,7 @@
 #pragma once
 #include "Graphics.h"
 #include <map>
+#include <sstream>
 
 namespace SDLFramework {
 	class AssetManager {
@@ -8,7 +9,8 @@ namespace SDLFramework {
 		static AssetManager* Instance();
 		static void Release();
 
-		SDL_Texture* GetTexture(std::string fileName, bool managed = false);
+		SDL_Texture* GetTexture(std::string filename, bool managed = false);
+		SDL_Texture* GetText(std::string text, std::string filename, int size, SDL_Color color, bool managed = false);
 
 		void DestroyTexture(SDL_Texture* texture);
 
@@ -17,11 +19,13 @@ namespace SDLFramework {
 		~AssetManager();
 
 		void UnloadTexture(SDL_Texture* texture);
+		TTF_Font* GetFont(std::string filename, int size);
 
 		static AssetManager* sInstance;
 
 				//Key			Value
 		std::map<std::string, SDL_Texture*> mTextures;
+		std::map<std::string, TTF_Font*> mFonts;
 		std::map<SDL_Texture*, unsigned> mTextureRefCount;
 	};
 }

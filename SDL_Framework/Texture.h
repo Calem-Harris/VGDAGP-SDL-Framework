@@ -7,6 +7,8 @@ namespace SDLFramework {
 	public:
 		Texture(std::string filename, bool managed = false);
 		Texture(std::string filename, int x, int y, int width, int height, bool managed = false);
+		//The below constructor makes a TEXT object instead of using an image
+		Texture(std::string text, std::string fontPath, int size, SDL_Color color, bool managed = false);
 		~Texture();
 
 		Vector2 ScaledDimensions();
@@ -15,7 +17,7 @@ namespace SDLFramework {
 
 		void Render() override;
 
-	private:
+	protected:
 		SDL_Texture* mTex;
 		Graphics* mGraphics;
 
