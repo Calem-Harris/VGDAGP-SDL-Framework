@@ -63,7 +63,8 @@ namespace SDLFramework {
         //Setup a second set of movement (ie arrow keys/IJKL) for the second texture
 
         if (mInputManager->KeyPressed(SDL_SCANCODE_SPACE)) {
-            std::cout << "Space key pressed!" << std::endl;
+            //std::cout << "Space key pressed!" << std::endl;
+            mAudioManager->PlaySFX("Audio/SFX/coin_credit.wav", 0, -1);
         }
 
         if (mInputManager->KeyReleased(SDL_SCANCODE_SPACE)) {
@@ -108,6 +109,7 @@ namespace SDLFramework {
         mTimer = Timer::Instance();
         mAssetManager = AssetManager::Instance();
         mInputManager = InputManager::Instance();
+        mAudioManager = AudioManager::Instance();
 
         mTex = new AnimatedTexture("SpriteSheet.png", 204, 45, 40, 38, 4, 0.5f, AnimatedTexture::Horizontal);
         mTex->Scale(Vector2(1.5f, 1.5f));
@@ -138,6 +140,9 @@ namespace SDLFramework {
 
         InputManager::Release();
         mInputManager = nullptr;
+
+        AudioManager::Release();
+        mAudioManager = nullptr;
 
         //Quit SDl Subsystems
         SDL_Quit();

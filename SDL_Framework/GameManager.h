@@ -2,6 +2,7 @@
 #include "Graphics.h"
 #include "AnimatedTexture.h"
 #include "InputManager.h"
+#include "AudioManager.h"
 
 namespace SDLFramework {
 	class GameManager {
@@ -31,6 +32,7 @@ namespace SDLFramework {
 		Timer* mTimer;
 		AssetManager* mAssetManager;
 		InputManager* mInputManager;
+		AudioManager* mAudioManager;
 
 		//Sanity Testing Varaibles
 		GameEntity* mParent;
