@@ -25,8 +25,6 @@ namespace SDLFramework {
 
 		virtual bool IgnoreCollisions();
 
-	//TODO: REMOVE THIS TAG
-	public:
 		unsigned long mId;
 		void AddCollider(Collider* collider, Vector2 locaPos = Vec2_Zero);
 	};

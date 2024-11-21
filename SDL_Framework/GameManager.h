@@ -36,16 +36,6 @@ namespace SDLFramework {
 		AudioManager* mAudioManager;
 		PhysicsManager* mPhysicsManager;
 
-		//Sanity Testing Varaibles
-		GameEntity* mParent;
-		GameEntity* mChild;
-
-		PhysEntity* mPhysOne;
-		PhysEntity* mPhysTwo;
-
-		Texture* mFontTex;
-		AnimatedTexture* mTex;
-
 		SDL_Event mEvents;
 	};
 }
