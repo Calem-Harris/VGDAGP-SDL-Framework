@@ -143,7 +143,7 @@ namespace SDLFramework {
 
         mPhysTwo = new PhysEntity();
         mPhysTwo->Position(Vector2(Graphics::SCREEN_WIDTH * 0.6f, Graphics::SCREEN_HEIGHT * 0.5f));
-        mPhysTwo->AddCollider(new BoxCollider(Vector2(20.0f, 20.0f)));
+        mPhysTwo->AddCollider(new BoxCollider(Vector2(50.0f, 50.0f)));
         mPhysTwo->mId = mPhysicsManager->RegisterEntity(mPhysTwo, PhysicsManager::CollisionLayers::Hostile);
     }
 
